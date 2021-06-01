@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarodrig <rarodrig@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 12:04:57 by rarodrig          #+#    #+#             */
-/*   Updated: 2021/05/19 12:04:57 by rarodrig         ###   ########.fr       */
+/*   Created: 2021/05/27 11:31:18 by rarodrig          #+#    #+#             */
+/*   Updated: 2021/05/27 11:31:18 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *str1, const void *str2, size_t n)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	unsigned char	*n_str1;
-	unsigned char	*n_str2;
+	unsigned char	*temp;
+	size_t	 		cont;
 
-	n_str1 = (unsigned char *) str1;
-	n_str2 = (unsigned char *) str2;
-	while (n > 0)
+	temp = malloc(nmemb * size);
+	if (temp == NULL)
 	{
-		if (*n_str1 != *n_str2)
-		{
-			return (*n_str1 - *n_str2);
-		}
-		*n_str2++;
-		*n_str1++;
-		n--;
+		return (NULL);
 	}
-	return (0);
+	cont = 0;
+	while (temp[cont] < (nmemb * size))
+	{
+		temp[cont] = 0;
+		++cont;
+	}
+	return ((void *)temp);
 }

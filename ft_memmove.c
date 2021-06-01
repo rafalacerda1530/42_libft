@@ -10,47 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-static int ft_strlen(unsigned char *n);
-
-void *ft_memmove(void *str1, const void *str2, size_t n)
+void	*ft_memmove(void *str1, const void *str2, size_t n)
 {
-	size_t cont;
-	size_t size;
-	unsigned char *n_str2;
-	unsigned char *n_str1;
+	unsigned char	*dst;
+	unsigned char	*src;
 
-	n_str2 = (unsigned char *) str2;
-	n_str1 = (unsigned char *) str1;
-
-	cont = 0;
-	size = ft_strlen(n_str2);
-
-	while (cont < n)
+	dst = (unsigned char *) str1;
+	src = (unsigned char *) str2;
+	if (src >= dst)
 	{
-		if (n > ft_strlen(n_str1))
-		{
-			
-		}
-		if (cont == size)
-		{
-			return(n_str1);
-		}
-		n_str1[cont] = n_str2[cont];
-		cont ++;
+		ft_memcpy(dst, src, n);
 	}
-	return(n_str1);
-}
-
-static int ft_strlen(unsigned char *n)
-{
-	size_t cont;
-
-	cont = 0;
-	while (n[cont] != '\0')
+	else
 	{
-		cont++;
+		while (n--)
+		{
+			dst[n] = src[n];
+		}
 	}
-	return(cont);
+	return (dst);
 }

@@ -10,24 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-size_t ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-    size_t cont;
+	size_t	cont;
 
-    cont = 0;
-    while (*s != 0)
-    {
-        ++s;
-        cont++;
-    }
-    return(cont);
-    
-}
-
-int main()
-{
-	printf("%ld",ft_strlen("rafael"));
-	return(0);
+	cont = 0;
+	while (*s != 0)
+	{
+		++s;
+		cont++;
+	}
+	return (cont);
 }

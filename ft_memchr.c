@@ -10,30 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-void *ft_memchr(const void *str, int c, size_t n)
+void	*ft_memchr(const void *str, int c, size_t n)
 {
 	while (n > 0)
 	{
 		if (*(unsigned char *) str == c)
 		{
-			return((void *)str);
+			return ((void *)str);
 		}
 		str++;
 		n--;
 	}
-	return(NULL);
-}
-
-int main () 
-{
-   const char str[] = "http://w.wwtutorialspoint.com";
-   const char ch = '.';
-   char *ret;
-
-   ret = ft_memchr(str, ch, strlen(str));
-
-   printf("String after |%c| is - |%s|\n", ch, ret);
+	return (NULL);
 }

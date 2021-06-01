@@ -10,15 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "libft.h"
 
-int ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr)
 {
-	int res;
-	int sign;
-	int cont;
+	int	res;
+	int	sign;
+	int	cont;
 
 	res = 0;
 	sign = 1;
@@ -41,19 +39,4 @@ int ft_atoi(const char *nptr)
 		cont++;
 	}
 	return (res * sign);
-}
-
-int main () {
-   int val;
-   char nptr1[20] = "98993489";
-   char nptr2[20] = "tutorialspoint.com";
-   
-  
-   val = ft_atoi(nptr1);
-   printf("nptring value = %s, Int value = %d\n", nptr1, val);
-
-   val = ft_atoi(nptr2);
-   printf("nptring value = %s, Int value = %d\n", nptr2, val);
-
-   return(0);
 }

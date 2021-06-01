@@ -10,23 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-
-static int	ft_strlen(int n);
+#include "libft.h"
 
 void	*ft_memccpy(void *dest, const void *src, int c, int n)
 {
-	int				cont;
+	size_t			cont;
 	unsigned char	*n_src;
 	unsigned char	*n_dest;
 
 	n_src = (unsigned char *) src;
 	n_dest = (unsigned char *) dest;
 	cont = 0;
-	while (cont < n)
+	while (cont < (size_t)n)
 	{
-		if (cont >= ft_strlen(n))
+		if (cont >= (size_t)n)
 		{
 			return (n_dest);
 		}
@@ -39,16 +36,4 @@ void	*ft_memccpy(void *dest, const void *src, int c, int n)
 		cont++;
 	}
 	return (n_dest);
-}
-
-static int	ft_strlen(int n)
-{
-	int	cont;
-
-	cont = 0;
-	while (cont < n)
-	{
-		cont ++;
-	}
-	return (cont);
 }
