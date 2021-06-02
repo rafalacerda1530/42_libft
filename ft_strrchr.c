@@ -14,21 +14,22 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t	size;
+	int		i;
+	int		a;
+	char	*n_s;
 
-	size = ft_strlen(s);
-	while (*s != '\0')
+	n_s = (char *) s;
+	i = 0;
+	a = -1;
+	while (n_s[i])
 	{
-		s++;
+		if (n_s[i] == (char)c)
+			a = i;
+		i++;
 	}
-	while (size > 0)
-	{
-		if (*s == c)
-		{
-			return ((char *) s);
-		}
-		s--;
-		size--;
-	}
+	if ((char )c == '\0')
+		return (n_s + i);
+	else if (a >= 0)
+		return (n_s + a);
 	return (NULL);
 }

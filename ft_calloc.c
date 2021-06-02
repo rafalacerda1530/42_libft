@@ -14,19 +14,13 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	unsigned char	*temp;
-	size_t	 		cont;
+	size_t	*temp;
 
+	if ((nmemb * size) > INT_MAX)
+		return (NULL);
 	temp = malloc(nmemb * size);
 	if (temp == NULL)
-	{
 		return (NULL);
-	}
-	cont = 0;
-	while (temp[cont] < (nmemb * size))
-	{
-		temp[cont] = 0;
-		++cont;
-	}
+	ft_memset(temp, 0, (nmemb * size));
 	return ((void *)temp);
 }

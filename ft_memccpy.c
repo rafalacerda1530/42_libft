@@ -10,9 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
 #include "libft.h"
 
-void	*ft_memccpy(void *dest, const void *src, int c, int n)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
 	size_t			cont;
 	unsigned char	*n_src;
@@ -21,19 +24,15 @@ void	*ft_memccpy(void *dest, const void *src, int c, int n)
 	n_src = (unsigned char *) src;
 	n_dest = (unsigned char *) dest;
 	cont = 0;
-	while (cont < (size_t)n)
+	while (cont < n)
 	{
-		if (cont >= (size_t)n)
-		{
-			return (n_dest);
-		}
-		else if (n_src[cont] == c)
+		if (n_src[cont] == c)
 		{
 			n_dest[cont] = n_src[cont];
-			return (n_dest);
+			return (n_dest + cont + 1);
 		}
 		n_dest[cont] = n_src[cont];
 		cont++;
 	}
-	return (n_dest);
+	return (NULL);
 }
