@@ -12,28 +12,69 @@
 
 #include "libft.h"
 
-static int cword(const char *word, char delimeter)
+static int	cword(const char *word, char delimeter)
 {
-	int cont;
-	int i;
+	int	cont;
 
-	if (!word || !delimeter )
-		return (0);
-	cont = 1;
+	cont = 0;
 	while (*word)
 	{
 		if (*word == delimeter)
-			cont++;
+			if (cont == 0)
+				cont = 1;
+		cont++;
 		word++;
 	}
 	return (cont);
 }
 
-int main()
+static char	*wordal(char const *s, char c)
 {
-	char teste[] = "aa aa aa a";
+	char	*str;
+	int		size;
+	int		cont;
 
-	printf("%d", cword(teste, ' '));
+	size = 0;
+	while (s[size] && s[size] != c)
+		size++;
+	str = (char *)malloc(size + 1);
+	if (str == NULL)
+		return (NULL);
+	cont = 0;
+	while (cont < size)
+	{
+		str[cont] = s[cont];
+		cont++;
+	}
+	str[cont] = '\0';
+	return (str);
+}
 
-	return 0;
+char	**ft_split(char const *s, char c)
+{
+	char	**array;
+	int		i;
+	int		f;
+	int		w;
+
+	array = (char **)malloc((cword(s, c) + 1) * sizeof(char *));
+	if (array == NULL)
+		return (NULL);
+	i = -1;
+	f = -1;
+	w = 0;
+	while (s[++i])
+	{
+		if (s[i] == c)
+			w = 0;
+		else if (s[i] != c && w == 0)
+		{
+			w = 1;
+			array[++f] = wordal(s + i, c);
+			if (array[f] == NULL)
+				return (NULL);
+		}
+	}
+	array[cword(s, c)] = 0;
+	return (array);
 }

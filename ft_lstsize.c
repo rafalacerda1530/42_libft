@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarodrig <rarodrig@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/02 18:54:45 by rarodrig          #+#    #+#             */
-/*   Updated: 2021/06/02 18:54:45 by rarodrig         ###   ########.fr       */
+/*   Created: 2021/06/07 09:45:13 by rarodrig          #+#    #+#             */
+/*   Updated: 2021/06/07 09:45:13 by rarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+int	ft_lstsize(t_list *lst)
 {
-	char	*n_s;
+	int	cont;
 
-	if (s == NULL)
-		return (NULL);
-	if (ft_strlen(s) < start || ft_strlen(s) < len)
-		return (ft_strdup(""));
-	n_s = (char *)malloc(sizeof(char) * (len + 1));
-	if (n_s == NULL)
-		return (NULL);
-	ft_strlcpy(n_s, s + start, len + 1);
-	return ((char *)n_s);
+	if (lst == NULL)
+		return (0);
+	cont = 0;
+	while (lst != NULL)
+	{
+		lst = lst->next;
+		cont++;
+	}
+	return (cont);
 }
