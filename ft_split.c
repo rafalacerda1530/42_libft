@@ -12,20 +12,27 @@
 
 #include "libft.h"
 
-static int	cword(const char *word, char delimeter)
+static int	cword(char const *s, char c)
 {
-	int	cont;
+	int	i;
+	int	count;
+	int	w;
 
-	cont = 0;
-	while (*word)
-	{
-		if (*word == delimeter)
-			if (cont == 0)
-				cont = 1;
-		cont++;
-		word++;
+	w = 0;
+	i = 0;
+	count = 0;
+	while (s[i])
+	{	
+		if (s[i] == c)
+			w = 0;
+		else if (s[i] != c && w == 0)
+		{
+			w = 1;
+			count++;
+		}
+		i++;
 	}
-	return (cont);
+	return (count);
 }
 
 static char	*wordal(char const *s, char c)
