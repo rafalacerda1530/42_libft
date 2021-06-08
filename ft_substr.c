@@ -18,11 +18,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (s == NULL)
 		return (NULL);
-	if (ft_strlen(s) < start || ft_strlen(s) < len)
+	if (ft_strlen(s) < start)
 		return (ft_strdup(""));
 	n_s = (char *)malloc(sizeof(char) * (len + 1));
 	if (n_s == NULL)
 		return (NULL);
 	ft_strlcpy(n_s, s + start, len + 1);
-	return ((char *)n_s);
+	return (n_s);
 }
