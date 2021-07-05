@@ -53,6 +53,7 @@ BONUS = ft_lstnew.c \
 		ft_lstclear.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
+		ft_putnbr_base.c\
 
 OBJ = $(FILES:.c=.o)
 
